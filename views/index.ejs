@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ffmpeg</title>
+    <style>
+      .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+
+      .button2 {background-color: #008CBA;} /* Blue */
+      .button3 {background-color: #f44336;} /* Red */
+      .button4 {background-color: #e7e7e7; color: black;} /* Gray */
+      .button5 {background-color: #555555;} /* Black */
+    </style>
+  </head>
+  <body>
+    <h1>ffmpeg</h1>
+    <br>
+    <p></p>
+
+    <% if (uploadFinished) {%>
+
+      <h3>Audio file has been successfully split into multiple clips: </h3>
+
+        <form action="/download" method="get" enctype="multipart/form-data">
+          <input type="submit" value="Download Clips">
+        </form>
+      <br>
+      <br>
+        <form action="/" method="get">
+           <input type="submit" value="Go back to upload a new file" />
+        </form>
+
+    <% } else if (uploadFinished2) {%>
+      
+      <h3>Silence longer than 3 seconds have been omitted from the file: </h3>
+
+        <form action="/download2" method="get" enctype="multipart/form-data">
+          <input type="submit" value="Download Clips">
+        </form>
+      <br>
+      <br>
+        <form action="/" method="get">
+           <input type="submit" value="Go back to upload a new file" />
+        </form>
+      
+    <% } else if (uploadFinished3) { %>
+
+       <h3>No silence of 3 seconds or longer have been detected from the file.</h3>
+      <br>
+      <br>
+        <form action="/" method="get">
+           <input type="submit" value="Go back to upload a new file" />
+        </form>
+
+
+    <% } else { %>
+       
+       <h4>Instructions: For both of the following functions, please upload a srt file and a mp3 file together (do a multi-select, selecting the srt file first then the mp3 file afterwards)</h4>
+       <br>
+
+       <i>Splits audio file into multiple clips: </i>
+       <br>
+       <br>
+
+       <div style="display:flex; flex-direction: row;">
+           <form action="/server-action" method="post" enctype="multipart/form-data">
+             <input type="file" name="upload" multiple />
+             <input type="submit" value="Upload">
+           </form>
+       </div>
+
+       <br>
+
+       <i>Detects silence from audio, splits audio file into multiple clips if silence of 3 seconds or longer is found: </i>
+       <br>
+       <br>
+
+       <div style="display:flex; flex-direction: row;">
+           <form action="/server-action2" method="post" enctype="multipart/form-data">
+             <input type="file" name="upload" multiple />
+             <input type="submit" value="Upload">
+           </form>
+       </div>
+
+       <br>
+
+
+    <% } %>  
+
+
+  </body>
+</html>
