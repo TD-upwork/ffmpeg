@@ -1,1 +1,3 @@
-# ffmpeg
+### Built a tool that can take in a scr file and a mp3 file as inputs, which then outputs a zip file that has split the original mp3 file into parts (as defined by the instructions found in the scr file). This tool is also able to detect whether there is silence in the mp3 file that lasts for 3 seconds or longer (as a second function). If this kind of silence is found, the mp3 file is split into parts (like the first function) and a json file is generated (containing clickable links to the split files). This app was created with Nodejs, Express, HTML, Apache, and Ubuntu.
+
+### app.js is the main file. The bash scripts are meant to be deployed in the linux web server.
